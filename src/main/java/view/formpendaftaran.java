@@ -31,7 +31,7 @@ public class formpendaftaran extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNama = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -51,12 +51,6 @@ public class formpendaftaran extends javax.swing.JFrame {
         jLabel1.setText("From Pendaftaran");
 
         jLabel2.setText("nama");
-
-        txtNama.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNamaActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("biaya kursus");
 
@@ -119,7 +113,7 @@ public class formpendaftaran extends javax.swing.JFrame {
                                 .addGap(29, 29, 29)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jTextField1)
-                                    .addComponent(txtNama)
+                                    .addComponent(jTextField2)
                                     .addComponent(jComboBox1, 0, 241, Short.MAX_VALUE)
                                     .addComponent(jTextField3))))))
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -132,7 +126,7 @@ public class formpendaftaran extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -149,8 +143,8 @@ public class formpendaftaran extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
 
@@ -169,39 +163,9 @@ public class formpendaftaran extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-        // 1. Mengambil data dari inputan form (URUTANNYA SUDAH DIPERBAIKI)
-        String nama = txtNama.getText(); // txtNama ternyata adalah input Nama
-        String biayaStr = jTextField1.getText(); // jTextField1 adalah input Biaya Kursus
-        String jumlahStr = jTextField3.getText(); // jTextField3 adalah input Jumlah
-        String kursus = jComboBox1.getSelectedItem().toString(); // Pilihan Kursus
-        
-        // 2. Mengubah tipe data String menjadi Integer untuk perhitungan
-        int biaya = Integer.parseInt(biayaStr);
-        int jumlah = Integer.parseInt(jumlahStr);
-        
-        // 3. Menghitung total biaya
-        int totalBiaya = biaya * jumlah;
-        
-        // 4. Menampilkan hasil ke JTextArea (jTextArea1)
-        jTextArea1.setText("--- BUKTI PENDAFTARAN ---\n");
-        jTextArea1.append("Nama Pendaftar\t: " + nama + "\n");
-        jTextArea1.append("Pilihan Kursus\t: " + kursus + "\n");
-        jTextArea1.append("Biaya per Kursus\t: Rp " + biaya + "\n");
-        jTextArea1.append("Jumlah\t\t: " + jumlah + "\n");
-        jTextArea1.append("---------------------------\n");
-        jTextArea1.append("Total Bayar\t: Rp " + totalBiaya + "\n");
-        
-    } catch (NumberFormatException e) {
-        // Pesan error jika biaya atau jumlah diisi huruf, bukan angka
-        javax.swing.JOptionPane.showMessageDialog(this, "Biaya dan Jumlah harus berupa angka!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-    }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         jTextField1.setText("");
-        txtNama.setText("");
+        jTextField2.setText("");
         jTextField3.setText("");
 
         // Mengembalikan combo box ke pilihan pertama
@@ -213,6 +177,36 @@ public class formpendaftaran extends javax.swing.JFrame {
         // Mengembalikan kursor kursor (fokus) ke input nama
         jTextField1.requestFocus();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            // 1. Mengambil data dari inputan form (URUTANNYA SUDAH DIPERBAIKI)
+            String nama = jTextField2.getText(); // txtNama ternyata adalah input Nama
+            String biayaStr = jTextField1.getText(); // jTextField1 adalah input Biaya Kursus
+            String jumlahStr = jTextField3.getText(); // jTextField3 adalah input Jumlah
+            String kursus = jComboBox1.getSelectedItem().toString(); // Pilihan Kursus
+
+            // 2. Mengubah tipe data String menjadi Integer untuk perhitungan
+            int biaya = Integer.parseInt(biayaStr);
+            int jumlah = Integer.parseInt(jumlahStr);
+
+            // 3. Menghitung total biaya
+            int totalBiaya = biaya * jumlah;
+
+            // 4. Menampilkan hasil ke JTextArea (jTextArea1)
+            jTextArea1.setText("--- BUKTI PENDAFTARAN ---\n");
+            jTextArea1.append("Nama Pendaftar\t: " + nama + "\n");
+            jTextArea1.append("Pilihan Kursus\t: " + kursus + "\n");
+            jTextArea1.append("Biaya per Kursus\t: Rp " + biaya + "\n");
+            jTextArea1.append("Jumlah\t\t: " + jumlah + "\n");
+            jTextArea1.append("---------------------------\n");
+            jTextArea1.append("Total Bayar\t: Rp " + totalBiaya + "\n");
+
+        } catch (NumberFormatException e) {
+            // Pesan error jika biaya atau jumlah diisi huruf, bukan angka
+            javax.swing.JOptionPane.showMessageDialog(this, "Biaya dan Jumlah harus berupa angka!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,7 +255,7 @@ public class formpendaftaran extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField txtNama;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
